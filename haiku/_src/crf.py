@@ -1,9 +1,19 @@
-import haiku as hk
+import types
+from typing import Optional, Callable, Tuple
+
 import jax.numpy as jnp
 import jax
 from jax.scipy.special import logsumexp
-from typing import Optional, Callable, Tuple
 import jax.lax as lax
+
+from haiku._src import initializers, module, base
+
+# If you are forking replace this with `import haiku as hk`.
+hk = types.ModuleType("haiku")
+hk.Module = module.Module
+hk.initializers = initializers
+hk.get_parameter = base.get_parameter
+del base, module, initializers
 
 class crf_layer(hk.Module):
 
