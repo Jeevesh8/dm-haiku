@@ -10,6 +10,18 @@ hk_py_library(
 )
 
 hk_py_library(
+    name = "crf",
+    srcs = ["crf.py"],
+    deps = [
+        ":base",
+        ":initializers",
+        ":module",
+        # pip: jax
+        # pip: numpy
+    ],
+)
+
+hk_py_library(
     name = "attention",
     srcs = ["attention.py"],
     deps = [
